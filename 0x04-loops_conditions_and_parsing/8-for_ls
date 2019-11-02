@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Prints filenames of the current directory after the hyphen.
+for filename in *;
+do
+	echo "$filename" | cut -d'-' -f2
+done
