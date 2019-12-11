@@ -11,3 +11,4 @@ file_line { 'Configures private key authentication':
     ensure => 'present',
       path => '/etc/ssh/ssh_config',
       line => '	IdentityFile ~/.ssh/holberton',
+}
