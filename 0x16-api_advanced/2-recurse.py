@@ -21,6 +21,8 @@ def recurse(subreddit, hot_list=[]):
         if res.json()['data']['children']:
             hot_list.extend(res.json()['data']['children'])
             return recurse(subreddit, hot_list)
+        if len(hot_list) == 0:
+            return None
         return hot_list
     else:
         print(None)
