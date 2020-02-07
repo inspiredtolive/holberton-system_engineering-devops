@@ -13,16 +13,16 @@ def recurse(subreddit, hot_list=[]):
     }
     params = {'after': None, 'limit': 100}
     if hot_list:
-        params['after'] = hot_list[-1].get('data').get('name')
+        params['after'] = hot_list[-1].get('data', None).get('name', None)
     res = requests.get(
         url, headers=headers, params=params, allow_redirects=False
     )
     if res.status_code == 200:
-        if res.json()['data']['children']:
+        if res.json().get('data', None).get('children', None):
             hot_list.extend(res.json()['data']['children'])
             return recurse(subreddit, hot_list)
         if len(hot_list) == 0:
             return None
         return hot_list
     else:
-        print(None)
+        return None
